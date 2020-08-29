@@ -9,7 +9,7 @@ solenoidOnOff = 22
 GPIO.setup(solenoid, GPIO.OUT)
 GPIO.setup(solenoidOnOff, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-sleep(120)#to allow Photometer parameters to be entered
+#sleep(120)#to allow Photometer parameters to be entered
 
 solenoidFrequency = 0
 while (int(solenoidFrequency) == 0):
