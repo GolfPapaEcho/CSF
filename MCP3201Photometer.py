@@ -92,10 +92,10 @@ if __name__ == '__main__':
     
 #menu
 fileName1 = raw_input('Please enter file name?:\n')
-pollFrequency = raw_input('\nPlease input sensor polling frequency in Hz?:\n')
-pollFrequencyFactor = 1.0/int(pollFrequency)
+pollFrequencyFactor = 0.1
 
-
+adcRunningTotal = 0
+adcRunningVoltage = 0
 
 #the infinite loop where the values are read and written to csv
 #while True:
@@ -108,12 +108,16 @@ with open(('/home/pi/Documents/CSF/'+fileName1+'.csv'), 'a+') as f:
         while True:
             n=0
             while (pi.read(actionSwitch)==True):
-                ADC_output_code = MCP3201.readADC_MSB()
-                ADC_voltage = MCP3201.convert_to_voltage(ADC_output_code)
+                for i  in range(1000):
+                    adcRunningTotal = adcRunningTotal + MCP3201.readADC_MSB()
+                    adcRunningVoltage = adcRunningVoltage + MCP3201.convert_to_voltage(ADC_output_code)
+                    sleep(0.0001)
+                ADC_output_code = adcRunningTotal/1000
+                ADC_voltage =  adcRunningVoltage/1000
                 writer.writerow([n, ADC_output_code, ADC_voltage])
                 n = n + pollFrequencyFactor
-                sleep(pollFrequencyFactor)
-
+                adcRunningTotal = 0
+                adcRunningVoltage = 0
 
         #output = interp(output, [0, 1023], [0, 100])
         #print(output)
