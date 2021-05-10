@@ -109,7 +109,8 @@ with open(('/home/pi/Documents/CSF/'+fileName1+'.csv'), 'a+') as f:
             n=0
             while (pi.read(actionSwitch)==True):
                 for i  in range(1000):
-                    adcRunningTotal = adcRunningTotal + MCP3201.readADC_MSB()
+                    ADC_output_code = MCP3201.readADC_MSB()
+                    adcRunningTotal = adcRunningTotal + ADC_output_code
                     adcRunningVoltage = adcRunningVoltage + MCP3201.convert_to_voltage(ADC_output_code)
                     sleep(0.0001)
                 ADC_output_code = adcRunningTotal/1000
