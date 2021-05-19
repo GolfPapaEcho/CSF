@@ -1,6 +1,6 @@
 import random
 
-print("Random choice generator. Press Ctrl + C to exit.")
+print("Random choice generator. Press Ctrl + C or Ctrl + \\ to exit.")
 
 while True:
     input("\nPress Enter to generate choice.")
