@@ -6,6 +6,6 @@ while True:
     input("\nPress Enter to generate choice.")
     randNumber = random.randrange(1000)
     if((randNumber % 2) == 0):
-        print("\nSolution")
+        print("\nPress")
     else:
-        print("\nWater")
+        print("\nNo Press")
