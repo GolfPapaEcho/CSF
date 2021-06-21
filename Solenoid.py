@@ -22,5 +22,5 @@ while True:
         #0.05s = one twentyth of a second = time solenoid energized.
         GPIO.output(solenoid, GPIO.HIGH)
         sleep(0.05)
-        GPIO.output(solenoid), GPIO.LOW)
-        sleep(solenoidFrequencyFactor)
+        GPIO.output(solenoid, GPIO.LOW)
+        sleep((solenoidFrequencyFactor-0.05))
