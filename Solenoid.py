@@ -16,7 +16,7 @@ while (int(solenoidFrequency) == 0):
     solenoidFrequency = raw_input('\nPlease input solenoid frequency in Hz?:\n')
     
 period = 1.0/int(solenoidFrequency)
-one2oneHundred = '1 - 100'
+
 while (int(dutyCyclePercent) == 0):
     dutyCyclePercent = raw_input('\nPlease enter duty cycle percentage in range 1 to 100:\n')
 dutyCycle = (dutyCyclePercent*period/100)
