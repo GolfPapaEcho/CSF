@@ -15,11 +15,13 @@ solenoidFrequency = 0
 while (int(solenoidFrequency) == 0):
     solenoidFrequency = raw_input('\nPlease input solenoid frequency in Hz?:\n')
     
-period = 1.0/int(solenoidFrequency)
+period = float(1.0/int(solenoidFrequency))
 
+dutyCyclePercent = 0
 while (int(dutyCyclePercent) == 0):
     dutyCyclePercent = raw_input('\nPlease enter duty cycle percentage in range 1 to 100:\n')
-dutyCycle = (dutyCyclePercent*period/100)
+dutyCyclePercent = float(dutyCyclePercent)
+dutyCycle = float(dutyCyclePercent*period/100)
 
 while True:
     while (GPIO.input(solenoidOnOff) == True):
