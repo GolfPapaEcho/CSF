@@ -1,4 +1,4 @@
-ping -c4 192.168.1.1 > /dev/null
+ping -c4 192.168.1.254 > /dev/null
 
 if [ $? != 0 ]
 then
