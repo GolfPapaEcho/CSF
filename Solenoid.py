@@ -16,14 +16,13 @@ parser.add_argument('--Frequency', type=float, required=True)
 parser.add_argument('--DutyCycle', type=float, required=True)
 args = parser.parse_args()
 solenoidFrequency = args.Frequency
-#while (int(solenoidFrequency) == 0):
-#    solenoidFrequency = raw_input('\nPlease input solenoid frequency in Hz?:\n')
+
     
-period = float(1.0/int(solenoidFrequency))
+period = float(1.0/float(solenoidFrequency))
 
 dutyCyclePercent = args.DutyCycle
-#while (int(dutyCyclePercent) == 0):
-#    dutyCyclePercent = raw_input('\nPlease enter duty cycle percentage in range 1 to 100:\n')
+
+
 dutyCyclePercent = float(dutyCyclePercent)
 dutyCycle = float(dutyCyclePercent*period/100)
 
