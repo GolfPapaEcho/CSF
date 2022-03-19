@@ -22,3 +22,12 @@ requires pigpio library see : http://abyz.me.uk/rpi/pigpio/download.html
 
 4 Ctrl + C to exit
   
+Instructions for CSFCamera.py
+
+Type the command (without quotes): -
+"nohup python CSFCamera.py &"
+Make a note of the process ID (PID) number
+(usually the four digit number that that gets returned)
+to kill the process type 
+(without quotes and with the actual PID instaed of stars)
+"kill ****" 
