@@ -1,0 +1,40 @@
+Traceback (most recent call last):
+  File "CSFCamera.py", line 9, in <module>
+    for filename in camera.capture_continuous('Pictures/img{timestamp:%Y-%m-%d-%H-%M-%S}.jpg'):
+  File "/usr/lib/python2.7/dist-packages/picamera/camera.py", line 1691, in capture_continuous
+    encoder.start(filename)
+  File "/usr/lib/python2.7/dist-packages/picamera/encoders.py", line 1126, in start
+    super(PiCookedOneImageEncoder, self).start(output)
+  File "/usr/lib/python2.7/dist-packages/picamera/encoders.py", line 375, in start
+    self._open_output(output)
+  File "/usr/lib/python2.7/dist-packages/picamera/encoders.py", line 331, in _open_output
+    self.outputs[key] = mo.open_stream(output)
+  File "/usr/lib/python2.7/dist-packages/picamera/mmalobj.py", line 344, in open_stream
+    stream = io.open(stream, 'wb' if output else 'rb', buffering)
+IOError: [Errno 2] No such file or directory: 'Pictures/img2022-02-24-15-48-25.jpg'
+Traceback (most recent call last):
+  File "CSFCamera.py", line 9, in <module>
+    for filename in camera.capture_continuous('Pictures/img{timestamp:%Y-%m-%d-%H-%M-%S}.jpg'):
+  File "/usr/lib/python2.7/dist-packages/picamera/camera.py", line 1691, in capture_continuous
+    encoder.start(filename)
+  File "/usr/lib/python2.7/dist-packages/picamera/encoders.py", line 1126, in start
+    super(PiCookedOneImageEncoder, self).start(output)
+  File "/usr/lib/python2.7/dist-packages/picamera/encoders.py", line 375, in start
+    self._open_output(output)
+  File "/usr/lib/python2.7/dist-packages/picamera/encoders.py", line 331, in _open_output
+    self.outputs[key] = mo.open_stream(output)
+  File "/usr/lib/python2.7/dist-packages/picamera/mmalobj.py", line 344, in open_stream
+    stream = io.open(stream, 'wb' if output else 'rb', buffering)
+IOError: [Errno 2] No such file or directory: 'Pictures/img2022-03-19-15-31-38.jpg'
+Capured /home/pi/Pictures/img2022-03-19-15-33-42.jpg
+Capured /home/pi/Pictures/img2022-03-19-15-34-01.jpg
+Capured /home/pi/Pictures/img2022-03-19-15-34-19.jpg
+Traceback (most recent call last):
+  File "CSFCamera.py", line 11, in <module>
+    sleep(18)
+KeyboardInterrupt
+Capured /home/pi/Pictures/img2022-03-19-15-36-51.jpg
+Traceback (most recent call last):
+  File "CSFCamera.py", line 11, in <module>
+    sleep(18)
+KeyboardInterrupt
