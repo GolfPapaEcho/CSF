@@ -24,10 +24,7 @@ requires pigpio library see : http://abyz.me.uk/rpi/pigpio/download.html
   
 Instructions for CSFCamera.py
 
-Type the command (without quotes): -
-"nohup python CSFCamera.py &"
-Make a note of the process ID (PID) number
-(usually the four digit number that that gets returned)
-to kill the process type 
-(without quotes and with the actual PID instaed of stars)
-"kill ****" 
+Type the command (without quotes and with the stars replaced by your choice of numbers): -
+"nohup python3 CSFCamera.py --Frequency ** --DutyCycle **"
+To terminate press and hold Ctrl & C or mac & C.
+
