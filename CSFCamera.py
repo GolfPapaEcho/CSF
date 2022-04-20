@@ -16,8 +16,10 @@ GPIO.setup(solenoidOnOff, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 parser = argp.ArgumentParser(description='Input frequency in Hertz then duty cycle as percentage.')
 parser.add_argument('--Frequency', type=float, required=True)
 parser.add_argument('--DutyCycle', type=float, required=True)
+parser.add_argument('--TimeLapse', type=float, required=True)
 args = parser.parse_args()
 solenoidFrequency = args.Frequency
+timeLapse = args.TimeLapse
 
 period = float(1.0/float(solenoidFrequency))
 dutyCyclePercent = args.DutyCycle
@@ -32,7 +34,7 @@ sleep(2)
 
 for filename in camera.capture_continuous('/home/pi/Pictures/img{timestamp:%Y-%m-%d-%H-%M-%S}.jpg'):
     print ('Capured %s' % filename)
-    periodCounter = float(18.0)
+    periodCounter = timeLapse
 	#sleep(18)
     while (periodCounter > 0):
         while ((GPIO.input(solenoidOnOff) == True)&(periodCounter > 0)):

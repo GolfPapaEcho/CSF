@@ -82,3 +82,10 @@ Traceback (most recent call last):
   File "CSFCamera.py", line 41, in <module>
     sleep(dutyCycle)
 KeyboardInterrupt
+Capured /home/pi/Pictures/img2022-04-20-06-40-18.jpg
+Capured /home/pi/Pictures/img2022-04-20-06-40-28.jpg
+Capured /home/pi/Pictures/img2022-04-20-06-40-38.jpg
+Traceback (most recent call last):
+  File "CSFCamera.py", line 50, in <module>
+    sleep(period)
+KeyboardInterrupt

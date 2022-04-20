@@ -25,6 +25,8 @@ requires pigpio library see : http://abyz.me.uk/rpi/pigpio/download.html
 Instructions for CSFCamera.py
 
 Type the command (without quotes and with the stars replaced by your choice of numbers): -
-"nohup python3 CSFCamera.py --Frequency ** --DutyCycle **"
+"nohup python3 CSFCamera.py --Frequency ** --DutyCycle ** --TimeLapse ****"
 To terminate press and hold Ctrl & C or mac & C.
+TimeLapse is the number of seconds between image captures e.g.
+half an hour would be 1800.
 
