@@ -3,7 +3,8 @@ from time import sleep
 from picamera import PiCamera
 import RPi.GPIO as GPIO
 import argparse as argp
-import subprocess
+import os
+
 
 GPIO.setmode(GPIO.BCM)
 
@@ -24,7 +25,7 @@ solenoidFrequency = args.Frequency
 timeLapse = args.TimeLapse
 runFolder = args.RunFolder
 
-subprocess.run("mkdir", ("/home/pi/Pictures/" + runFolder))
+os.mkdir(os.path.join('/home/pi/Pictures/', runFolder))
 
 period = float(1.0/float(solenoidFrequency))
 dutyCyclePercent = args.DutyCycle
@@ -37,7 +38,7 @@ camera = PiCamera()
 #camera.start_preview()
 sleep(2)
 
-for filename in camera.capture_continuous(('/home/pi/Pictures/' + runFolder + 'img{timestamp:%Y-%m-%d-%H-%M-%S}.jpg')):
+for filename in camera.capture_continuous(('/home/pi/Pictures/' + runFolder + '/' + 'img{timestamp:%Y-%m-%d-%H-%M-%S}.jpg')):
     print ('Capured %s' % filename)
     periodCounter = timeLapse
 	#sleep(18)
