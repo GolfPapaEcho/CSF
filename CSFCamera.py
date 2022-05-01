@@ -38,7 +38,7 @@ camera = PiCamera()
 #camera.start_preview()
 sleep(2)
 
-for filename in camera.capture_continuous(('/home/pi/Pictures/' + runFolder + '/' + 'img{timestamp:%Y-%m-%d-%H-%M-%S}.jpg')):
+for filename in camera.capture_continuous(('/home/pi/Pictures/' + runFolder + '/' + runFolder + 'img{timestamp:%Y-%m-%d-%H-%M-%S}.jpg')):
     print ('Capured %s' % filename)
     periodCounter = timeLapse
 	#sleep(18)
