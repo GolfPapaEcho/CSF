@@ -1,9 +1,10 @@
-import datetime;
-from time import sleep
-from picamera import PiCamera
-import RPi.GPIO as GPIO
-import argparse as argp
-import os
+if __name__ == '__main__':
+    import datetime
+    from time import sleep
+    from picamera import PiCamera
+    import RPi.GPIO as GPIO
+    import argparse as argp
+    import os
 
 
 GPIO.setmode(GPIO.BCM)
