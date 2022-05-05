@@ -25,13 +25,13 @@ solenoidFrequency = args.Frequency
 timeLapse = args.TimeLapse
 runFolder = args.RunFolder
 
-os.mkdir(os.path.join('/home/pi/Pictures/', runFolder))
+os.makedirs(os.path.join('/home/pi/Pictures/', runFolder))
 
-period = float(1.0/float(solenoidFrequency))
+period = (1.0/solenoidFrequency)
 dutyCyclePercent = args.DutyCycle
 
-dutyCyclePercent = float(dutyCyclePercent)
-dutyCycle = float(dutyCyclePercent*period/100)
+#dutyCyclePercent = float(dutyCyclePercent)
+dutyCycle = (dutyCyclePercent*period/100)
 
 
 camera = PiCamera()
