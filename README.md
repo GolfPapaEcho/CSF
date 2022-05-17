@@ -1,5 +1,5 @@
 # CSF
-Python Code for CSF flow model experiment.
+Python Code for CSF flow model experiments.
 Thanks to flohwie for the MCP3201 rpi code
 https://github.com/flohwie/raspi-MCP3201
 
@@ -25,7 +25,7 @@ requires pigpio library see : http://abyz.me.uk/rpi/pigpio/download.html
 Instructions for CSFCamera.py
 
 Type the command (without the double quotes and with the stars replaced by your choice of numbers.
-The 'uniqueRunName' should be your choice of a unique name for the run and must be in 'quotes'): -
+The 'uniqueRunName' should be your choice of a unique name for the run and must be in 'quotes' and contain no spaces or special characters.): -
 "nohup python3 CSFCamera.py --Frequency ** --DutyCycle ** --TimeLapse **** --RunFolder 'uniqueRunName'"
 To terminate press and hold Ctrl & C or Cmd & C.
 TimeLapse is the number of seconds between image captures e.g.
