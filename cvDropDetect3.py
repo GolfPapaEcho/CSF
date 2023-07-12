@@ -1,5 +1,8 @@
 # import the necessary packages
-from imutils.video import VideoStream
+
+from tempimage import TempImage
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 import argparse
 import warnings
 import datetime
@@ -15,24 +18,25 @@ import upload2
 ap = argparse.ArgumentParser()
 ap.add_argument("-c", "--conf", required=True,
 	help="path to the JSON configuration file")
-ap.add_argument("-p", "--picamera", type=int, default=-1,
-	help="whether or not the Raspberry Pi camera should be used")
-ap.add_argument("-v", "--video", help="path to the video file")
 args = vars(ap.parse_args())
 
-#filter warnings and load conf.json
+# filter warnings, load the configuration and initialize the Dropbox
+# client
 warnings.filterwarnings("ignore")
 conf = json.load(open(args["conf"]))
+client = None
 
-#choose camera
-if args.get("video", None) is None:
-	vs = VideoStream(usePiCamera=args["picamera"] > 0).start()
-	#vs = VideoStream(src=0).start()
-	time.sleep(2.0)
-# otherwise, we are reading from a video file
-else:
-	vs = cv2.VideoCapture(args["video"])
+# check to see if the Dropbox should be used
+if conf["use_dropbox"]:
+	# connect to dropbox and start the session authorization process
+	client = dropbox.Dropbox(conf["dropbox_access_token"])
+	print("[SUCCESS] dropbox account linked")
 
+# initialize the camera and grab a reference to the raw camera capture
+camera = PiCamera()
+camera.resolution = tuple(conf["resolution"])
+camera.framerate = conf["fps"]
+rawCapture = PiRGBArray(camera, size=tuple(conf["resolution"]))
 # allow the camera to warmup, then initialize the average frame, last
 # uploaded timestamp, and frame motion counter
 print("[INFO] warming up...")
@@ -40,6 +44,7 @@ time.sleep(conf["camera_warmup_time"])
 avg = None
 lastUploaded = datetime.datetime.now()
 motionCounter = 0
+
 
 # capture frames from the camera
 for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -62,7 +67,8 @@ for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True
 	# previous frames, then compute the difference between the current
 	# frame and running average
 	cv2.accumulateWeighted(gray, avg, 0.5)
-	frameDelta = cv2.absdiff(gray, cv2.convertScaleAbs(avg))
+	frameDelta = cv2.absdiff(gray, cv2.convertScaleAbs(avg))# capture frames from the camera
+
 		# threshold the delta image, dilate the thresholded image to fill
 	# in holes, then find contours on thresholded image
 	thresh = cv2.threshold(frameDelta, conf["delta_thresh"], 255,
@@ -114,3 +120,14 @@ for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True
 	# otherwise, the room is not occupied
 	else:
 		motionCounter = 0
+		# check to see if the frames should be displayed to screen
+	if conf["show_video"]:
+		# display the security feed
+		cv2.imshow("Security Feed", frame)
+		key = cv2.waitKey(1) & 0xFF
+		# if the `q` key is pressed, break from the lop
+		if key == ord("q"):
+			break
+	# clear the stream in preparation for the next frame
+	rawCapture.truncate(0)
+	
