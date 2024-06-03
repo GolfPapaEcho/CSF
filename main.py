@@ -7,8 +7,8 @@ import ds18x20
 
 
 # Set up network
-wifi_ssid = "TALKTALK419838"
-wifi_password = "BU33XR4B"
+wifi_ssid = "yourSSID"
+wifi_password = "yourPassword"
 
 # Connect to WiFi
 wifi = network.WLAN(network.STA_IF)
