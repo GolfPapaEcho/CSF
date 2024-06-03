@@ -4,11 +4,11 @@ import machine
 import time
 import onewire
 import ds18x20
-
+import secrets
 
 # Set up network
-wifi_ssid = "yourSSID"
-wifi_password = "yourPassword"
+wifi_ssid = secrets.SSID
+wifi_password = secrets.PASSWORD
 
 # Connect to WiFi
 wifi = network.WLAN(network.STA_IF)
