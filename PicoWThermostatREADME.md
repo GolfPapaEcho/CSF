@@ -10,4 +10,4 @@ the webpage).
 Just edit the secrets.py with your SSID and PASSWORD and upload the main.py and
 adjusted secrets.py code to the Pico W in the same folder and away you go!
 
-:-) GPE  
+:-) MGH
