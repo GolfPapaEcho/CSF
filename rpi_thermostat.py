@@ -57,7 +57,12 @@ if __name__ == '__main__':
 
     finally:
         if not is_solenoid_running():
+            GPIO.output(HEATER_PIN, GPIO.LOW)
+            print("Heater Off")
             GPIO.cleanup()
-            print("GPIO cleaned up.")
+            print("GPIO Cleaned up")
         else:
+            GPIO.output(HEATER_PIN, GPIO.LOW)
+            print("Heater Off")
             print("Solenoid.py is running. Skipping GPIO cleanup.")
+
